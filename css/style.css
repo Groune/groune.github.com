@@ -429,7 +429,6 @@ body { font-size:12px; font-family:"微软雅黑"; margin-bottom:30px; }
 .login .form { padding:0 12px 0 12px; }
 .login .form ul { padding:15px 0 2px 0; border-bottom:1px solid #dbdbdb; }
 .login .form li { height:26px; }
-.login .form li .checkbox { padding-top:8px; }
 .login .form li strong { font-weight:normal; }
 .login .form .text { width:87px; height:17px; background:#f7f7f7; border:1px solid #e5e5e5; margin-right:6px; }
 .login .form .btn { width:56px; height:22px; line-height:22px; color:#ffffff; font-weight:bold; text-align:center; border-radius:11px; border:none; box-shadow:1px 2px 1px #c1c1c1; cursor:pointer; }
