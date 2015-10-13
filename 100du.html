@@ -5,6 +5,7 @@
 	<title>100度</title>
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="shortcut icon" href="img/100du.ico">
+	<script src="js/jquery-1.11.3.js"></script>
 </head>
 <body>
 	<div id="header" class="gradient_f8">
@@ -47,10 +48,10 @@
 		<div class="bar">
 			<ul class="menu">
 				<li class="current">搜店</li>
-				<li>地址</li>
-				<li>优惠券</li>
-				<li>全文</li>
-				<li>视频</li>
+				<li class="gradient_f5">地址</li>
+				<li class="gradient_f5">优惠券</li>
+				<li class="gradient_f5">全文</li>
+				<li class="gradient_f5">视频</li>
 			</ul>
 			<form action="#">
 				<input type="text" class="text" value="例如：荷棠鱼坊烤鱼 或 樱花日本料理">
@@ -68,12 +69,43 @@
 		</div>
 		<div class="img"></div>
 
-		<div class="update" id="update">
+		<div class="update">
 			<div class="wrap">
-				<ul></ul>
-				<a href="#" id="updateBtnUp" class="arrow_red_up"></a>
-				<a href="#" id="updateBtnDown" class="arrow_red_down"></a>
+				<ul>
+					<li>
+						<span><a href="#" class="author">萱萱</a></span>
+						<em>6分钟前</em>
+						<a href="">写了一篇新文章：那些灿烂华美的瞬间…</a>
+					</li>
+					<li>
+						<span><a href="#" class="author">萱萱</a></span>
+						<em>5分钟前</em>
+						<a href="">写了二篇新文章：那些灿烂华美的瞬间…</a>
+					</li>
+					<li>
+						<span><a href="#" class="author">萱萱</a></span>
+						<em>4分钟前</em>
+						<a href="">写了三篇新文章：那些灿烂华美的瞬间…</a>
+					</li>
+					<li>
+						<span><a href="#" class="author">萱萱</a></span>
+						<em>3分钟前</em>
+						<a href="">写了四篇新文章：那些灿烂华美的瞬间…</a>
+					</li>
+					<li>
+						<span><a href="#" class="author">萱萱</a></span>
+						<em>2分钟前</em>
+						<a href="">写了五篇新文章：那些灿烂华美的瞬间…</a>
+					</li>
+					<li>
+						<span><a href="#" class="author">萱萱</a></span>
+						<em>1分钟前</em>
+						<a href="">写了六篇新文章：那些灿烂华美的瞬间…</a>
+					</li>
+				</ul>
 			</div>
+			<a href="#" class="arrow_red_up"></a href="#">
+			<a href="#" class="arrow_red_down"></a href="#">
 		</div>
 	
 	</div>
@@ -99,7 +131,7 @@
 				<div class="options fr shop">
 					<ul class="tab clear">
 						<li class="active fl"><h3>HOT SHOP<em>红店铺</em></h3><a href="javascript:;" class="arrow_red_down"></a></li>
-						<li class="fr"><h3>EW SHOP<em>新开张</em></h3><a href="javascript:;" class="arrow_gray"></a></li>
+						<li class="gradient_f3 fr"><h3>EW SHOP<em>新开张</em></h3><a href="javascript:;" class="arrow_gray"></a></li>
 						
 					</ul>
 					<div class="con">
@@ -145,7 +177,7 @@
 						<div class="ewCon">
 							<ul>
 								<li>
-									<a href="#"><img src="img/cont/hot_list_pic2.gif" alt=""></a>
+									<a href="#"><img src="img/cont/hot_list_pic1.gif" alt=""></a>
 									<div>
 										<h4><a href="#">御舟和涵珍园国际酒店</a></h4>
 										<p>
@@ -156,7 +188,7 @@
 									</div>
 								</li>
 								<li>
-									<a href="#"><img src="img/cont/hot_list_pic2.gif" alt=""></a>
+									<a href="#"><img src="img/cont/hot_list_pic1.gif" alt=""></a>
 									<div>
 										<h4><a href="#">御舟和涵珍园国际酒店</a></h4>
 										<p>
@@ -167,7 +199,7 @@
 									</div>
 								</li>
 								<li>
-									<a href="#"><img src="img/cont/hot_list_pic2.gif" alt=""></a>
+									<a href="#"><img src="img/cont/hot_list_pic1.gif" alt=""></a>
 									<div>
 										<h4><a href="#">御舟和涵珍园国际酒店</a></h4>
 										<p>
@@ -340,7 +372,7 @@
 				<div class="options fl">
 					<ul class="tab clear"> 
 						<li class="active fl"><h3>SUBWAY<em>地铁交通</em></h3><a href="#" class="arrow_red_down"></a></li>
-						<li class="fr"><h3>MAP<em>生活圈</em></h3><a href="#" class="arrow_gray"></a></li>
+						<li class="gradient_f3 fr"><h3>MAP<em>生活圈</em></h3><a href="#" class="arrow_gray"></a></li>
 					</ul>
 					<div class="con" ><!-- position:absolute; -->
 						<div class="subway"><!-- 高度写死 -->
@@ -480,7 +512,7 @@
 							<li>有人知道<a href="#" class="arrow_gray"></a></li>
 							<li>热门问题<a href="#" class="arrow_gray"></a></li>
 						</ul>
-						<div class="con">
+						<div class="conts">
 							<div class="active">
 								<ul>
 									<li class="con_title"><span>标题</span><em>状态</em></li>
@@ -610,12 +642,12 @@
 				<h3 class="section_title"><em>COUPONS</em>抢卷儿<a href="#" class="more"></a></h3>
 				<div class="trip_option">
 					<ul class="tab">
-						<li  class="active">人气<a href="#" class="arrow_red_down"></a></li>
+						<li>人气<a href="#" class="arrow_red_down"></a></li>
 						<li>推荐<a href="#" class="arrow_gray"></a></li>
-						<li>最新<a href="#" class="arrow_gray"></a></li>
+						<li  class="active">最新<a href="#" class="arrow_gray"></a></li>
 					</ul>
-					<div class="con">
-						<div class="active">
+					<div class="conts">
+						<div>
 							<ul>
 								<li class="con_title">
 									<span class="col1">商店名</span>
@@ -683,7 +715,7 @@
 								</li>
 							</ul>
 						</div>
-						<div>
+						<div class="active">
 							<ul>
 								<li class="con_title">
 									<span class="col1">商店名</span>
@@ -866,7 +898,26 @@
 		</ul>
 		<p>Copyright&nbsp©&nbsp2008 www.100du.com&nbsp100度享乐网&nbsp版权所有&nbsp&nbsp&nbsp&nbsp京ICP证0843234号</p>
 	</div>
-</body>
 
-<script src="js/main.js"></script>
+</body>
+<script>
+	window.onload=function () {
+		
+	}
+	function getByClass (str,obj) {
+		var aList= obj.getElementsByTagName('*');
+		var result=[];
+		if (obj === undefined) { obj="document" };
+		for (var i = 0; i < aList.length; i++) {
+			var sCls = aList[i].className
+			var aCls=sCls.split(" ");
+			for ( var j=0; j<aCls.length; j++){
+				if ( aCls[j] == str ){
+					result.push(aList[i]);
+				}
+			}
+		};
+		return result;
+	}
+</script>
 </html>
