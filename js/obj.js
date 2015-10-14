@@ -28,7 +28,6 @@ window.onload=function ()
 
 
 function Options(name) {
-	this.name = name;
 	this.tabs = getChildNodes('li',getByClass('tab',name)[0]);
 	this.cons = getChildNodes('div',getByClass('con',name)[0]);
 	this.arrows = getByClass('tab',name)[0].getElementsByTagName('a');

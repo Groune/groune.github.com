@@ -1,5 +1,4 @@
-(function () 
-{
+(function () {
 
 	var aOptions = getByClass('options');
 	var aToption = getByClass('trip_option');
@@ -23,15 +22,16 @@
 
 		for (var i = 0; i < aMli.length; i++) 
 		{
-			aMli[i].index = i ;
-			aMli[i].onclick = function () 
-			{
-				switchClass(this,"current");
-				iNow = this.index;
-				if (oText.value != arrText[iNow]) {
-					oText.value = arrText[iNow];
-				};
-			}
+			aMli[i].onclick = (function (t) {
+				return function () {
+					switchClass(this,"current");
+					iNow = t;
+					if (oText.value != arrText[t]) 
+					{
+						oText.value = arrText[t];
+					};
+				}
+			})(i);
 		};
 
 		oText.onfocus = function () {
@@ -118,8 +118,119 @@
 			}, 5000);
 		};
 	})();
+	//日历信息显示隐藏，bug：由于对话框三角引起的today_info区域闪烁
+	(function () {
+		var oActivity = getByClass('activity')[0];
+		var oInfo = getByClass('today_info',oActivity)[0];
+		var oInfoImg = oInfo.getElementsByTagName('img')[0];
+		var oInfoTitle = oInfo.getElementsByTagName('h3')[0];
+		var oInfoCon = oInfo.getElementsByTagName('p')[0];
+		var aDay = oActivity.getElementsByTagName('ol')[0].getElementsByTagName('li');
+		for (var i = 0; i < aDay.length; i++) {
+			aDay[i].onmouseover = (function () {
+				return showInfo;
+			})();
+		};
+		function showInfo () {
+			var oInfoData = {};
+			var oImg = this.getElementsByTagName('img')[0];
+			if (!oImg)  { return ; }
+			oInfoData.height= 108;
+			oInfoData.week=['MON','TUE','WED','THU','FRI','SAT','SUN'];
+			oInfoData.left = this.offsetLeft+this.offsetWidth+22;
+			oInfoData.top =this.offsetTop + 54 + this.offsetHeight/2;
+			oInfoData.today = oInfoData.week[Math.floor(this.offsetLeft/this.offsetWidth)];
+			oInfoImg.src = oImg.src;
+			oInfoTitle.innerHTML= "<strong>"+ oInfoData.today +"</strong>本日主题";
+			oInfoCon.innerHTML = oImg.getAttribute('info');
+			oInfo.style.left = oInfoData.left + 20 +'px';
+			oInfo.style.top = oInfoData.top - oInfoData.height/2 +'px';
+			oInfo.style.display = "block";
+			this.onmouseout = function () {
+				oInfo.style.display = "none";
+			}
+		};
+	})();
+	//轮播 思路：对所有大图循环一次，判断i?=iTarget；==则显示；！=则隐藏。
+	(function () {
+		var oFade = document.getElementById('fade');
+		var iTarget=0;
+		var oInfo = oFade.getElementsByTagName('p')[0];
+		var aBig = oFade.getElementsByTagName('ul')[0].getElementsByTagName('li');
+		var aSmall = oFade.getElementsByTagName('ol')[0].getElementsByTagName('li');
+		var timer = null;
+		var arr = [ '爸爸去哪儿啦~', '人像摄影中的光影感', '娇柔妩媚、美艳大方' ];
+		fnFade();
+		autoPlay();
+		function autoPlay () {
+		 	timer = setInterval(function () {
+		 		iTarget++;
+		 		iTarget%=aBig.length;
+		 		fnFade();
+		 	}, 2000);
+		 };
+		 for (var i = 0; i < aSmall.length; i++) {
+		 	aBig[i].onmouseover = function () {
+		 		clearInterval(timer);
+		 	};
+		 	aBig[i].onmouseout = function () {
+		 		fnFade();
+		 		autoPlay();
+		 	};
+		 	aSmall[i].onclick = (function (t) {
+		 		return function () {
+		 			clearInterval(timer);
+		 			iTarget = t;
+		 			fnFade();
+		 			autoPlay();
+		 		}
+		 	})(i);
+		 };
+
+		function fnFade () {
+			for (var i = 0; i < aBig.length; i++) {
+				if(i == iTarget){
+					startMove(aBig[i],'opacity',100,function() {
+						this.className = 'active';
+					}.call(aSmall[i]));
+				} else {
+					startMove(aBig[i],'opacity',0,function () {
+						this.className='';
+					}.call(aSmall[i]));
+				}
+			};
+			oInfo.innerHTML=arr[iTarget];
+		}
+	})();
+	//map切换btn换色
+	(function () {
+		var oSubway = getByClass('subway')[0];
+		var aImg = getByClass('img_list',oSubway)[0].getElementsByTagName('li');
+		var aBtn = getByClass('text_list',oSubway)[0].getElementsByTagName('li');
+		var re = /(^_)|(active)/g;
+		for (var i = 0; i < aBtn.length; i++) {
+			aBtn[i].onclick = (function (t) {
+				return function () {
+					this.style.backgroundColor ="#" + this.className.replace(re,'');
+					switchClass(aBtn[t],"active");
+					switchClass(aImg[t],"active");
+				}
+			})(i);
+		};
+	})();
+	//bbs滑动
+	(function () {
+		var oBbs = getByClass('bbsCon')[0];
+		var aLi = oBbs.getElementsByTagName('li');
+		for (var i = 0; i < aLi.length; i++) {
+			aLi[i].onmouseover = function () {
+				switchClass(this,'active');
+			};
+		};
+	})();
 })();
 
+//公共方法
 
 function getChildNodes (par,nodeName) 
 {
@@ -148,6 +259,12 @@ function switchClass (obj,cName)
 	obj.className += " " + cName;
 };
 
+function removeClass (obj,cName) {
+	var re = new RegExp(cName,'g');
+	var spaceRe = /(^\s*)|(\s*$)/g;
+	obj.className = obj.className.replace(re,'');
+	obj.className = obj.className.replace(spaceRe,'');
+}
 
 function getByClass (str,obj) 
 {
@@ -169,7 +286,6 @@ function switchTab (obj)
 		for (var j = 0; j < aOli.length; j++) {
 			aOli[j].onclick=(function (t) 
 			{
-				var _index = j;
 				return function () 
 				{
 					var aArrow = this.parentNode.getElementsByTagName('a');
@@ -178,16 +294,16 @@ function switchTab (obj)
 					{
 						aArrow[i].className = "arrow_gray";
 					};
-					aArrow[_index].className = "arrow_red_down";
+					aArrow[t].className = "arrow_red_down";
 					switchClass(this,'active');
-					switchClass(aDiv[_index],'active');
+					switchClass(aDiv[t],'active');
 				}
-			}).call(aOli[j],j);
+			})(j);
 		};
 	};
 };
 
-function startMove (obj,attr,iTarget) 
+function startMove (obj,attr,iTarget,fn) 
 {        
     clearInterval(obj.timer);
     obj.timer=setInterval(function()
@@ -208,6 +324,7 @@ function startMove (obj,attr,iTarget)
         if(iTarget==iCur)
         {
             clearInterval(obj.timer);
+            if (fn) {fn();};
         }
         else
         {

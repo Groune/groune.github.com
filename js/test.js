@@ -21,3 +21,6 @@ function getByClass (str,obj)
 	};
 	return result;
 };
+
+var arr=[1,2,3,4,5].slice()；
+console.log(typeof(arr));
