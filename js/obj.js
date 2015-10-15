@@ -5,15 +5,13 @@ window.onload=function ()
 	var aMli=oMenu.getElementsByTagName('li');
 	var aOptions = getByClass('options');
 	var aToption = getByClass('trip_option');
-
 	for (var i = 0; i < aMli.length; i++) 
 	{
 		aMli[i].onclick = function () 
 		{
 			switchClass(this,"current");
-		}
+		};
 	};
-
 	var option1 = new Options(aOptions[0]);
 	var option2 = new Options(aOptions[1]);
 	var oTption1 = new Options(aToption[0]);
@@ -22,16 +20,12 @@ window.onload=function ()
 	option2.switch();
 	oTption1.switch();
 	oTption2.switch();
-
-
 };
-
-
 function Options(name) {
 	this.tabs = getChildNodes('li',getByClass('tab',name)[0]);
 	this.cons = getChildNodes('div',getByClass('con',name)[0]);
 	this.arrows = getByClass('tab',name)[0].getElementsByTagName('a');
-}
+};
 
 Options.prototype.switch = function(){
 	for (var i = 0; i < this.tabs.length; i++) {

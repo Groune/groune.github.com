@@ -1,9 +1,27 @@
 (function () {
+	//切换城市
+	(function () 
+	{
+		var aCity = document.getElementById('city').getElementsByTagName('a');
+		for (var i = 0; i < aCity.length; i++) 
+		{
+			aCity[i].onclick=function () 
+			{
+				switchClass(this,'active');
+			};
+		};
+	})();
+	//选项卡
+	(function () {
+		var aOptions = getByClass('options');
+		var aToption = getByClass('trip_option');
+		for (var i = 0; i < aOptions.length; i++) 
+		{
+			switchTab(aOptions[i]);
+			switchTab(aToption[i]);
+		};
+	})();
 
-	var aOptions = getByClass('options');
-	var aToption = getByClass('trip_option');
-	switchTab(aOptions);
-	switchTab(aToption);
 	//搜索框
 	(function () {
 		var oSearch = document.getElementById('search');
@@ -22,28 +40,29 @@
 
 		for (var i = 0; i < aMli.length; i++) 
 		{
-			aMli[i].onclick = (function (t) {
-				return function () {
-					switchClass(this,"current");
-					iNow = t;
-					if (oText.value != arrText[t]) 
-					{
-						oText.value = arrText[t];
-					};
-				}
-			})(i);
+			aMli[i].index = i ;
+			aMli[i].onclick = function () 
+			{
+				switchClass(this,"current");
+				iNow = this.index;
+				oText.value = (oText.value == arrText[iNow])? oText.value : arrText[iNow];
+			}
 		};
 
-		oText.onfocus = function () {
-			if (this.value == arrText[iNow]) {
+		oText.onfocus = function () 
+		{
+			if (this.value == arrText[iNow]) 
+			{
 				this.value = "";
 			};
-		}
-		oText.onblur = function () {
-			if (this.value == "") {
+		};
+		oText.onblur = function () 
+		{
+			if (this.value == "") 
+			{
 				this.value = arrText[iNow];
 			};
-		}
+		};
 	})();
 
 //update
@@ -67,55 +86,66 @@
 			{ 'name':'畅畅', 'time':11, 'title':'那些灿烂华美的瞬间', 'url':'http://www.miaov.com/2013/#message' }
 		];
 		var str = '';
-		for (var i = 0; i < arrData.length; i++) {
+		for (var i = 0; i < arrData.length; i++) 
+		{
 			str += '<li><a class="author" href="' +arrData[i].url+ '">' +arrData[i].name+ '</a><em>'+ arrData[i].time +'分钟前</em><a href="'+ arrData[i].url +'">写了一篇新文章：'+ arrData[i].title +'…</a></li>';			
 		};
 		str += str;
 		oUl.innerHTML = str;
 		height = oUl.getElementsByTagName('li')[0].offsetHeight;
 
-		timer = setInterval(function () {
+		timer = setInterval(function () 
+		{
 			doMove(1);
 		}, 5000);
 
 		function doMove (num)
 		{
 			iNow += num;
-			//num为负，向上滚动。边界条件为下半幅第一位展示过后再重定位ul.top=0；同时设iNow=-1;
+			//num为负，向上滚动。第length/2+1个li展示过后再重定位ul.top=0；同时设iNow=-1;
 			//即改变iNow的取值范围为[-1,-8];
-			if (Math.abs(iNow) > arrData.length ) {
+			if (Math.abs(iNow) > arrData.length ) 
+			{
 				iNow = -1;
 				oUl.style.top = 0*height + 'px';
 			};
-			if (iNow > 0) {
+			if (iNow > 0) 
+			{
 				iNow = -arrData.length+1;
 				oUl.style.top = -arrData.length*height + 'px';
 			};
 			startMove(oUl,'top',height*iNow);
 		}
-		oUl.onmouseover = function () {
+		oUl.onmouseover = function () 
+		{
 			clearInterval(timer);
 		};
-		oUl.onmouseout = function () {
-			timer = setInterval(function () {
+		oUl.onmouseout = function () 
+		{
+			timer = setInterval(function () 
+			{
 				doMove(-1);
-			}, 5000);
+			}, 4000);
 		};
-		oBtnUp.onclick = function () {
+		oBtnUp.onclick = function () 
+		{
 			clearInterval(timer);
 			iNow += -1;
 			doMove(-1);
-			timer = setInterval(function () {
+			timer = setInterval(function () 
+			{
 				doMove(-1);
-			}, 5000);
+			}, 4000);
 		};
-		oBtnDown.onclick = function () {
+		oBtnDown.onclick = function () 
+		{
 			clearInterval(timer);
 			iNow += 1;
 			doMove(1);
-			timer = setInterval(function () {
+			timer = setInterval(function ()
+			{
 				doMove(1);
-			}, 5000);
+			}, 4000);
 		};
 	})();
 	//日历信息显示隐藏，bug：由于对话框三角引起的today_info区域闪烁
@@ -126,12 +156,15 @@
 		var oInfoTitle = oInfo.getElementsByTagName('h3')[0];
 		var oInfoCon = oInfo.getElementsByTagName('p')[0];
 		var aDay = oActivity.getElementsByTagName('ol')[0].getElementsByTagName('li');
-		for (var i = 0; i < aDay.length; i++) {
-			aDay[i].onmouseover = (function () {
+		for (var i = 0; i < aDay.length; i++) 
+		{
+			aDay[i].onmouseover = (function () 
+			{
 				return showInfo;
 			})();
 		};
-		function showInfo () {
+		function showInfo () 
+		{
 			var oInfoData = {};
 			var oImg = this.getElementsByTagName('img')[0];
 			if (!oImg)  { return ; }
@@ -146,7 +179,8 @@
 			oInfo.style.left = oInfoData.left + 20 +'px';
 			oInfo.style.top = oInfoData.top - oInfoData.height/2 +'px';
 			oInfo.style.display = "block";
-			this.onmouseout = function () {
+			this.onmouseout = function () 
+			{
 				oInfo.style.display = "none";
 			}
 		};
@@ -162,22 +196,29 @@
 		var arr = [ '爸爸去哪儿啦~', '人像摄影中的光影感', '娇柔妩媚、美艳大方' ];
 		fnFade();
 		autoPlay();
-		function autoPlay () {
-		 	timer = setInterval(function () {
+		function autoPlay () 
+		{
+		 	timer = setInterval(function () 
+		 	{
 		 		iTarget++;
-		 		iTarget%=aBig.length;
+		 		iTarget %= aBig.length;
 		 		fnFade();
 		 	}, 2000);
 		 };
-		 for (var i = 0; i < aSmall.length; i++) {
-		 	aBig[i].onmouseover = function () {
+
+		 for (var i = 0; i < aSmall.length; i++) 
+		 {
+		 	aBig[i].onmouseover = function () 
+		 	{
 		 		clearInterval(timer);
 		 	};
-		 	aBig[i].onmouseout = function () {
+		 	aBig[i].onmouseout = function () 
+		 	{
 		 		fnFade();
 		 		autoPlay();
 		 	};
-		 	aSmall[i].onclick = (function (t) {
+		 	aSmall[i].onclick = (function (t) 
+		 	{
 		 		return function () {
 		 			clearInterval(timer);
 		 			iTarget = t;
@@ -187,30 +228,38 @@
 		 	})(i);
 		 };
 
-		function fnFade () {
-			for (var i = 0; i < aBig.length; i++) {
-				if(i == iTarget){
-					startMove(aBig[i],'opacity',100,function() {
+		function fnFade () 
+		{
+			for (var i = 0; i < aBig.length; i++) 
+			{
+				if(i == iTarget)
+				{
+					startMove(aBig[i],'opacity',100,function() 
+					{
 						this.className = 'active';
 					}.call(aSmall[i]));
 				} else {
-					startMove(aBig[i],'opacity',0,function () {
+					startMove(aBig[i],'opacity',0,function () 
+					{
 						this.className='';
 					}.call(aSmall[i]));
 				}
 			};
 			oInfo.innerHTML=arr[iTarget];
-		}
+		};
 	})();
-	//map切换btn换色
+	//map区域点击btn换色
 	(function () {
 		var oSubway = getByClass('subway')[0];
 		var aImg = getByClass('img_list',oSubway)[0].getElementsByTagName('li');
 		var aBtn = getByClass('text_list',oSubway)[0].getElementsByTagName('li');
 		var re = /(^_)|(active)/g;
-		for (var i = 0; i < aBtn.length; i++) {
-			aBtn[i].onclick = (function (t) {
-				return function () {
+		for (var i = 0; i < aBtn.length; i++) 
+		{
+			aBtn[i].onclick = (function (t) 
+			{
+				return function () 
+				{
 					this.style.backgroundColor ="#" + this.className.replace(re,'');
 					switchClass(aBtn[t],"active");
 					switchClass(aImg[t],"active");
@@ -219,11 +268,14 @@
 		};
 	})();
 	//bbs滑动
-	(function () {
+	(function () 
+	{
 		var oBbs = getByClass('bbsCon')[0];
 		var aLi = oBbs.getElementsByTagName('li');
-		for (var i = 0; i < aLi.length; i++) {
-			aLi[i].onmouseover = function () {
+		for (var i = 0; i < aLi.length; i++) 
+		{
+			aLi[i].onmouseover = function () 
+			{
 				switchClass(this,'active');
 			};
 		};
@@ -232,21 +284,22 @@
 
 //公共方法
 
+//获取特定类型子节点，去除空节点
 function getChildNodes (par,nodeName) 
 {
 	var aTemp = par.childNodes;
 	var result = [];
 	for (var i = 0; i < aTemp.length; i++) 
 	{
-		if (aTemp[i].nodeType == 1) { 
+		if (aTemp[i].nodeType == 1) 
+		{ 
 			result.push(aTemp[i]);
-			 };
+		};
 	};
 	return result;
 };
 
-
-function switchClass (obj,cName) 
+function switchClass (obj,cName)
 {
 	var aTab= getChildNodes(obj.parentNode,obj.nodeName);
 	var re = new RegExp(cName,'g');
@@ -259,47 +312,39 @@ function switchClass (obj,cName)
 	obj.className += " " + cName;
 };
 
-function removeClass (obj,cName) {
-	var re = new RegExp(cName,'g');
-	var spaceRe = /(^\s*)|(\s*$)/g;
-	obj.className = obj.className.replace(re,'');
-	obj.className = obj.className.replace(spaceRe,'');
-}
-
 function getByClass (str,obj) 
 {
-	if (typeof(arguments[1]) == 'undefined') { obj = document };
+	obj = (obj)? obj : document;
 	var aList= obj.getElementsByTagName('*');
 	var result=[];
 	var re = new RegExp('\\b('+str+')\\b');
-	for (var i = 0; i < aList.length; i++) {
+	for (var i = 0; i < aList.length; i++) 
+	{
 		if (re.test(aList[i].className)) { result.push(aList[i]); }
 	};
 	return result;
 };
 
-
 function switchTab (obj)
 {
-	for (var i = 0; i < obj.length; i++) {
-		var aOli = getByClass('tab',obj[i])[0].getElementsByTagName('li');
-		for (var j = 0; j < aOli.length; j++) {
-			aOli[j].onclick=(function (t) 
+	var aLi = getByClass('tab',obj)[0].getElementsByTagName('li');
+	var aDiv = getByClass('con',obj)[0].getElementsByTagName('div');
+	var aArrow = getByClass('tab',obj)[0].getElementsByTagName('a');
+	for (var i = 0; i < aLi.length; i++) 
+	{
+		aLi[i].onclick=(function (t) 
+		{
+			return function () 
 			{
-				return function () 
+				for (var i = 0; i < aArrow.length; i++) 
 				{
-					var aArrow = this.parentNode.getElementsByTagName('a');
-					var aDiv = getChildNodes(this.parentNode.nextSibling.nextSibling,'div');
-					for (var i = 0; i < aArrow.length; i++) 
-					{
-						aArrow[i].className = "arrow_gray";
-					};
-					aArrow[t].className = "arrow_red_down";
-					switchClass(this,'active');
-					switchClass(aDiv[t],'active');
-				}
-			})(j);
-		};
+					aArrow[i].className = "arrow_gray";
+				};
+				aArrow[t].className = "arrow_red_down";
+				switchClass(this,'active');
+				switchClass(aDiv[t],'active');
+			}
+		})(i);
 	};
 };
 
@@ -308,16 +353,7 @@ function startMove (obj,attr,iTarget,fn)
     clearInterval(obj.timer);
     obj.timer=setInterval(function()
     {
-        var iCur=0;
-        if(attr=='opacity')
-        {
-            iCur=Math.round(parseFloat(getStyle(obj,attr))*100);
-        }
-        else
-        {
-
-            iCur=parseInt(getStyle(obj,attr));
-        }            
+        var iCur = (attr=='opacity')? Math.round(parseFloat(getStyle(obj,attr))*100) : parseInt(getStyle(obj,attr));
         var iSpeed=(iTarget-iCur)/5;
         iSpeed=iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
 
