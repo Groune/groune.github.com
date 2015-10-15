@@ -350,16 +350,16 @@ body { font-size:12px; font-family:"微软雅黑"; margin-bottom:30px; }
 	background:     -o-linear-gradient( #fdfdfd, #e0e0e0 );
 	background:        linear-gradient( #fdfdfd, #e0e0e0 );}
 #subway_wrap .subway .text_list li em { font-size:12px; font-weight:bold; }
-#subway_wrap .subway .text_list ._dc0000 { border-color:#dc0000; }
-#subway_wrap .subway .text_list ._dc0000 em { color:#dc0000; }
-#subway_wrap .subway .text_list ._003399 { border-color:#003399; }
-#subway_wrap .subway .text_list ._003399 em { color:#003399; }
-#subway_wrap .subway .text_list ._ff9900 { border-color:#ff9900; }
-#subway_wrap .subway .text_list ._ff9900 em { color:#ff9900; }
-#subway_wrap .subway .text_list ._dd0f0f { border-color:#dd0f0f; }
-#subway_wrap .subway .text_list ._dd0f0f em { color:#dd0f0f; }
-#subway_wrap .subway .text_list ._903077 { border-color:#903077; }
-#subway_wrap .subway .text_list ._903077 em { color:#903077; }
+#subway_wrap .subway .text_list .img_dc0000 { border-color:#dc0000; }
+#subway_wrap .subway .text_list .img_dc0000 em { color:#dc0000; }
+#subway_wrap .subway .text_list .img_003399 { border-color:#003399; }
+#subway_wrap .subway .text_list .img_003399 em { color:#003399; }
+#subway_wrap .subway .text_list .img_ff9900 { border-color:#ff9900; }
+#subway_wrap .subway .text_list .img_ff9900 em { color:#ff9900; }
+#subway_wrap .subway .text_list .img_dd0f0f { border-color:#dd0f0f; }
+#subway_wrap .subway .text_list .img_dd0f0f em { color:#dd0f0f; }
+#subway_wrap .subway .text_list .img_903077 { border-color:#903077; }
+#subway_wrap .subway .text_list .img_903077 em { color:#903077; }
 #subway_wrap .subway .text_list .active { height:27px; width:55px; line-height:27px; padding-left:2px; background:#ff9900; color:#ffffff; border:none; }
 #subway_wrap .subway .text_list .active em { color:#ffffff!important; font-size:12px; font-weight:bold; }
 #subway_wrap .options .life_map { position:absolute; width:320px; height:294px; }

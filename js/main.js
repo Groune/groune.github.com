@@ -253,7 +253,7 @@
 		var oSubway = getByClass('subway')[0];
 		var aImg = getByClass('img_list',oSubway)[0].getElementsByTagName('li');
 		var aBtn = getByClass('text_list',oSubway)[0].getElementsByTagName('li');
-		var re = /(^_)|(active)/g;
+		var re = /(^img_)|(active)/g;
 		for (var i = 0; i < aBtn.length; i++) 
 		{
 			aBtn[i].onclick = (function (t) 
