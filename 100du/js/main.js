@@ -43,7 +43,10 @@
 			aMli[i].index = i ;
 			aMli[i].onclick = function () 
 			{
-				switchClass(this,"current");
+				for (var j = 0, l = aMli.length; j < l; j++) {
+					aMli[j].className='gradient_f8';
+				};
+				this.className='current';
 				iNow = this.index;
 				oText.value = (oText.value == arrText[iNow])? oText.value : arrText[iNow];
 			}
@@ -328,13 +331,13 @@ function getByClass (str,obj)
 function switchTab (obj)
 {
 	var aLi = getByClass('tab',obj)[0].getElementsByTagName('li');
-	var aDiv = getByClass('con',obj)[0].getElementsByTagName('div');
+	var aDiv = getChildNodes(getByClass('con',obj)[0],'div');
 	var aArrow = getByClass('tab',obj)[0].getElementsByTagName('a');
 	for (var i = 0; i < aLi.length; i++) 
 	{
 		aLi[i].onclick=(function (t) 
 		{
-			return function () 
+			return function ()
 			{
 				for (var i = 0; i < aArrow.length; i++) 
 				{
@@ -343,6 +346,7 @@ function switchTab (obj)
 				aArrow[t].className = "arrow_red_down";
 				switchClass(this,'active');
 				switchClass(aDiv[t],'active');
+				console.log(aDiv[t]);
 			}
 		})(i);
 	};
