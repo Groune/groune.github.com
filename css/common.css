@@ -302,6 +302,10 @@ html, body {
   font-size: 16px;
 }
 
+body {
+  min-height: 100vh;
+}
+
 article {
   line-height: 1.6;
 }
@@ -457,7 +461,7 @@ header .btn div {
 }
 /*main*/
 .main {
-  padding-bottom: 80px;
+  padding-bottom: 100px;
   font-size: 16px;
 }
 .main img {
@@ -523,6 +527,9 @@ header .btn div {
 }
 /*footer*/
 footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   height: 60px;
   padding-left: 24px;
   padding-right: 24px;
@@ -706,6 +713,11 @@ footer .copyright {
   width: 100%;
 }
 /*form common*/
+.w15 input[type=text], .w15 input[type=number], .w15 input[type=tel], .w15 input[type=date] {
+  width: 150px;
+  height: 30px;
+}
+
 .form-detail, .form-total {
   padding: 0 12px;
 }
@@ -715,10 +727,6 @@ footer .copyright {
 .form-detail label, .form-total label {
   display: inline-block;
   padding-left: 12px;
-}
-.form-detail input, .form-total input {
-  width: 150px;
-  height: 30px;
 }
 .form-detail.done, .form-total.done {
   padding-top: 6px;
@@ -785,4 +793,53 @@ footer .copyright {
   display: inline-block;
   width: 80px;
   text-align: center;
+}
+
+.items-list {
+  box-shadow: 0 -3px 10px #dddddd;
+}
+.items-list li {
+  position: relative;
+  height: 70px;
+  padding: 8px 12px;
+  border-bottom: 1px solid #CCCCCC;
+  box-shadow: 0 -3px 10px #dddddd inset;
+}
+.items-list li span {
+  display: inline-block;
+  min-width: 100px;
+  margin-right: 20px;
+}
+.items-list .ico {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  width: 20px;
+  line-height: 69px;
+}
+
+.check-list {
+  padding-left: 12px;
+}
+.check-list input[type=checkbox] {
+  width: 0;
+}
+.check-list div {
+  padding-left: 25px;
+}
+.check-list em {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: url("../images/checked.png") -12px 0 no-repeat;
+  background-size: 24px 12px;
+}
+.check-list input:checked + em {
+  background-position: 0 0;
+}
+.check-list label {
+  height: 28px;
+  width: 80px;
+  padding-left: 0;
+  font-size: 12px;
 }
