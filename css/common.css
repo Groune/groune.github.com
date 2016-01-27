@@ -714,17 +714,94 @@ footer .copyright {
   width: 100%;
 }
 /*form common*/
-.w15 label {
+.w-12-5, .w-12-5-l {
+  /*以label的最小宽度作为应用规则*/
+}
+.w-12-5 label, .w-12-5-l label {
   display: inline-block;
   min-width: 125px;
 }
-.w15 select, .w15 input[type=text], .w15 input[type=number], .w15 input[type=tel], .w15 input[type=date] {
+.w-12-5 select, .w-12-5-l select, .w-12-5 input[type=text], .w-12-5-l input[type=text], .w-12-5 input[type=number], .w-12-5-l input[type=number], .w-12-5 input[type=tel], .w-12-5-l input[type=tel], .w-12-5 input[type=date], .w-12-5-l input[type=date] {
   width: 150px;
   height: 30px;
 }
 
+.w-12-5-l {
+  /*对长label作修正*/
+}
+.w-12-5-l .long select, .w-12-5-l .long input[type=text], .w-12-5-l .long input[type=number], .w-12-5-l .long input[type=tel], .w-12-5-l .long input[type=date] {
+  margin-left: 125px;
+}
+
+.w-14-5, .w-14-5-l {
+  /*以label的最小宽度作为应用规则*/
+}
+.w-14-5 label, .w-14-5-l label {
+  display: inline-block;
+  min-width: 145px;
+}
+.w-14-5 select, .w-14-5-l select, .w-14-5 input[type=text], .w-14-5-l input[type=text], .w-14-5 input[type=number], .w-14-5-l input[type=number], .w-14-5 input[type=tel], .w-14-5-l input[type=tel], .w-14-5 input[type=date], .w-14-5-l input[type=date] {
+  width: 150px;
+  height: 30px;
+}
+@media screen and (max-width: 320px) {
+  .w-14-5 select, .w-14-5-l select, .w-14-5 input[type=text], .w-14-5-l input[type=text], .w-14-5 input[type=number], .w-14-5-l input[type=number], .w-14-5 input[type=tel], .w-14-5-l input[type=tel], .w-14-5 input[type=date], .w-14-5-l input[type=date] {
+    width: 140px;
+  }
+}
+
+.w-14-5-l {
+  /*对长label作修正*/
+}
+.w-14-5-l .long select, .w-14-5-l .long input[type=text], .w-14-5-l .long input[type=number], .w-14-5-l .long input[type=tel], .w-14-5-l .long input[type=date] {
+  margin-left: 145px;
+}
+
+.w-16 {
+  /*以label的最小宽度作为应用规则*/
+}
+.w-16 label {
+  display: inline-block;
+  min-width: 160px;
+}
+.w-16 select, .w-16 input[type=text], .w-16 input[type=number], .w-16 input[type=tel], .w-16 input[type=date] {
+  width: 150px;
+  height: 30px;
+}
+@media screen and (max-width: 320px) {
+  .w-16 select, .w-16 input[type=text], .w-16 input[type=number], .w-16 input[type=tel], .w-16 input[type=date] {
+    width: 120px;
+  }
+}
+.w-16 .long select, .w-16 .long input[type=text], .w-16 .long input[type=number], .w-16 .long input[type=tel], .w-16 .long input[type=date] {
+  margin-left: 160px;
+}
+
+.w-19 label {
+  display: inline-block;
+  min-width: 190px;
+}
+.w-19 select, .w-19 input[type=text], .w-19 input[type=number], .w-19 input[type=tel], .w-19 input[type=date] {
+  width: 150px;
+  height: 30px;
+}
+@media screen and (max-width: 320px) {
+  .w-19 select, .w-19 input[type=text], .w-19 input[type=number], .w-19 input[type=tel], .w-19 input[type=date] {
+    width: 100px;
+  }
+}
+
 .half {
   width: 50%;
+}
+
+.form-title {
+  line-height: 40px;
+  margin-bottom: -10px;
+  text-align: center;
+  background: #fdfdfd;
+  font-size: 18px;
+  border-top: 1px solid #d6d6d6;
 }
 
 .apply-btn {
@@ -800,6 +877,31 @@ footer .copyright {
   filter: alpha(opacity=1);
   cursor: pointer;
   z-index: 1;
+}
+
+.form-max {
+  padding: 15px 0;
+}
+.form-max > li {
+  padding: 5px 12px 5px 24px;
+  line-height: 30px;
+}
+.form-max > li:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+}
+.form-max .up-pic {
+  padding-left: 12px;
+}
+.form-max select, .form-max input[type=text], .form-max input[type=number], .form-max input[type=tel], .form-max input[type=date] {
+  width: 80px;
+  height: 30px;
+  float: right;
+  /*
+  @include media(320px,120px);
+  */
 }
 
 .form-detail, .form-total {
