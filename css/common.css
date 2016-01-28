@@ -297,6 +297,9 @@ textarea:focus, [type=text]:focus, [type=number]:focus, [type=date]:focus, [type
 .btn-wrap {
   padding: 0 12px;
 }
+.btn-wrap .btn {
+  width: 100%;
+}
 
 html, body {
   position: relative;
@@ -359,6 +362,7 @@ nav.show {
   top: 0;
   left: 0;
   background: #FFFFFF;
+  -webkit-transform: scaleY(0.5);
   transform: scaleY(0.5);
 }
 .nav li {
@@ -375,6 +379,7 @@ nav.show {
   bottom: 0;
   left: 0;
   background: #FFFFFF;
+  -webkit-transform: scaleY(0.5);
   transform: scaleY(0.5);
 }
 .nav a {
@@ -420,14 +425,18 @@ nav.show {
 }
 
 .head-nav-btn.hover .l-top {
+  -webkit-transform-origin: right top 0;
   transform-origin: right top 0;
+  -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
 .head-nav-btn.hover .l-cen {
   opacity: 0;
 }
 .head-nav-btn.hover .l-bot {
+  -webkit-transform-origin: right bottom 0;
   transform-origin: right bottom 0;
+  -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 /*header*/
@@ -529,17 +538,18 @@ header .btn div {
 /*footer*/
 footer {
   position: absolute;
+  width: 100%;
+  height: 60px;
   bottom: 0;
   left: 0;
-  height: 60px;
-  padding-left: 24px;
-  padding-right: 24px;
   padding-top: 10px;
   background: #ed0803;
   text-align: center;
   color: #e5e5e5;
 }
 footer .icp {
+  margin-left: 12px;
+  margin-right: 12px;
   font-size: 12px;
   line-height: 1;
   border-bottom: 1px solid #e5e5e5;
@@ -552,6 +562,7 @@ footer .icp span {
 }
 footer .copyright {
   width: 200%;
+  -webkit-transform: scale(0.5);
   transform: scale(0.5);
   margin-top: 7px;
   margin-left: -50%;
@@ -628,28 +639,6 @@ footer .copyright {
 .staff {
   font-size: 15px;
 }
-.staff .s-info {
-  position: relative;
-  height: 78px;
-  margin-top: 5px;
-  padding: 18px 12px;
-  background: #FFFFFF;
-}
-.staff .s-info .sign {
-  position: absolute;
-  top: 27px;
-  right: 15px;
-  width: 75px;
-  height: 25px;
-  line-height: 25px;
-  text-align: center;
-  border: none;
-  border-radius: 2px;
-  background: #e6e6e6;
-}
-.staff .s-info .sign .ico {
-  font-size: 15px;
-}
 .staff .s-nav {
   margin-top: 15px;
   background: #FFFFFF;
@@ -672,6 +661,31 @@ footer .copyright {
 .staff .s-nav a .jiantou-right {
   float: right;
   margin-right: 0;
+}
+
+.s-info {
+  position: relative;
+  /*
+  margin-top: 5px;
+  */
+  padding: 16px 12px;
+  background: #FFFFFF;
+}
+.s-info .sign {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  width: 75px;
+  height: 25px;
+  margin-top: -13px;
+  line-height: 25px;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+  background: #e6e6e6;
+}
+.s-info .sign .ico {
+  font-size: 15px;
 }
 
 .plan {
@@ -706,12 +720,19 @@ footer .copyright {
   margin: 40px 0;
   padding: 0 12px;
 }
-.apply .btn-wrap a {
-  width: 150px;
-  margin-left: 12px;
-}
 .apply .btn-wrap button {
   width: 100%;
+}
+/*product-cent*/
+.product-cent .btn-wrap {
+  margin: 40px 0;
+  padding: 0 12px;
+}
+.product-cent .btn-wrap button {
+  width: 100%;
+}
+.product-cent .check-list {
+  margin-bottom: -20px;
 }
 /*form common*/
 .w-12-5, .w-12-5-l {
@@ -749,6 +770,12 @@ footer .copyright {
     width: 140px;
   }
 }
+.w-14-5 .long label, .w-14-5-l .long label {
+  line-height: 25px;
+}
+.w-14-5.form-detail .remark label, .form-detail.w-14-5-l .remark label {
+  margin-right: -54px;
+}
 
 .w-14-5-l {
   /*对长label作修正*/
@@ -757,23 +784,30 @@ footer .copyright {
   margin-left: 145px;
 }
 
-.w-16 {
+.w-16, .w-16-l {
   /*以label的最小宽度作为应用规则*/
 }
-.w-16 label {
+.w-16 label, .w-16-l label {
   display: inline-block;
   min-width: 160px;
 }
-.w-16 select, .w-16 input[type=text], .w-16 input[type=number], .w-16 input[type=tel], .w-16 input[type=date] {
+.w-16 select, .w-16-l select, .w-16 input[type=text], .w-16-l input[type=text], .w-16 input[type=number], .w-16-l input[type=number], .w-16 input[type=tel], .w-16-l input[type=tel], .w-16 input[type=date], .w-16-l input[type=date] {
   width: 150px;
   height: 30px;
 }
 @media screen and (max-width: 320px) {
-  .w-16 select, .w-16 input[type=text], .w-16 input[type=number], .w-16 input[type=tel], .w-16 input[type=date] {
+  .w-16 select, .w-16-l select, .w-16 input[type=text], .w-16-l input[type=text], .w-16 input[type=number], .w-16-l input[type=number], .w-16 input[type=tel], .w-16-l input[type=tel], .w-16 input[type=date], .w-16-l input[type=date] {
     width: 120px;
   }
 }
-.w-16 .long select, .w-16 .long input[type=text], .w-16 .long input[type=number], .w-16 .long input[type=tel], .w-16 .long input[type=date] {
+.w-16 .long select, .w-16-l .long select, .w-16 .long input[type=text], .w-16-l .long input[type=text], .w-16 .long input[type=number], .w-16-l .long input[type=number], .w-16 .long input[type=tel], .w-16-l .long input[type=tel], .w-16 .long input[type=date], .w-16-l .long input[type=date] {
+  margin-left: 160px;
+}
+
+.w-16-l {
+  /*对长label作修正*/
+}
+.w-16-l .long select, .w-16-l .long input[type=text], .w-16-l .long input[type=number], .w-16-l .long input[type=tel], .w-16-l .long input[type=date] {
   margin-left: 160px;
 }
 
@@ -787,7 +821,33 @@ footer .copyright {
 }
 @media screen and (max-width: 320px) {
   .w-19 select, .w-19 input[type=text], .w-19 input[type=number], .w-19 input[type=tel], .w-19 input[type=date] {
-    width: 100px;
+    width: 90px;
+  }
+}
+
+.w-19-5-l .long select, .w-19-5-l .long input[type=text], .w-19-5-l .long input[type=number], .w-19-5-l .long input[type=tel], .w-19-5-l .long input[type=date] {
+  margin-left: 195px;
+}
+.w-19-5-l.form-detail .remark label {
+  margin-right: -110px;
+}
+.w-19-5-l label {
+  display: inline-block;
+  min-width: 195px;
+}
+.w-19-5-l select, .w-19-5-l input[type=text], .w-19-5-l input[type=number], .w-19-5-l input[type=tel], .w-19-5-l input[type=date] {
+  width: 150px;
+  height: 30px;
+}
+@media screen and (max-width: 320px) {
+  .w-19-5-l label {
+    min-width: 145px;
+  }
+  .w-19-5-l .long select, .w-19-5-l .long input[type=text], .w-19-5-l .long input[type=number], .w-19-5-l .long input[type=tel], .w-19-5-l .long input[type=date] {
+    margin-left: 145px;
+  }
+  .w-19-5-l.form-detail .remark label {
+    margin-right: -54px;
   }
 }
 
@@ -802,6 +862,11 @@ footer .copyright {
   background: #fdfdfd;
   font-size: 18px;
   border-top: 1px solid #d6d6d6;
+}
+.form-title.done {
+  padding-left: 20px;
+  text-align: left;
+  border-top: none;
 }
 
 .apply-btn {
@@ -833,6 +898,10 @@ footer .copyright {
   border-bottom: 1px solid #dcdcdc;
   padding: 10px 12px 0 0;
   overflow: hidden;
+}
+.pic-group label {
+  min-width: 0 !important;
+  padding-left: 0 !important;
 }
 .pic-group li {
   position: relative;
@@ -907,7 +976,7 @@ footer .copyright {
 .form-detail, .form-total {
   padding: 5px 0;
 }
-.form-detail li, .form-total li {
+.form-detail > li, .form-total > li {
   padding-left: 12px;
   padding-right: 12px;
   line-height: 40px;
@@ -990,7 +1059,6 @@ footer .copyright {
 }
 .items-list li {
   position: relative;
-  height: 70px;
   padding: 8px 12px;
   border-bottom: 1px solid #CCCCCC;
   box-shadow: 0 -3px 10px #dddddd inset;
@@ -998,23 +1066,48 @@ footer .copyright {
 .items-list li span {
   display: inline-block;
   min-width: 100px;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 .items-list .ico {
   position: absolute;
   right: 20px;
-  top: 0;
+  top: 50%;
   width: 20px;
   line-height: 69px;
+  margin-top: -35px;
 }
 
 .done .check-list {
   padding-left: 0;
 }
+.check-list.center {
+  /*
+  text-align: center;
+  */
+}
+.check-list.center p {
+  min-height: 40px;
+  padding-left: 8%;
+  font-size: 16px;
+}
+.check-list.center .all span, .check-list.center .all label, .check-list.center .part span, .check-list.center .part label {
+  float: left;
+  font-size: 16px;
+}
+.check-list.center .all label, .check-list.center .part label {
+  margin-top: 6px;
+}
+.check-list.center .this input {
+  width: 100px;
+  margin-left: 10px;
+}
+.check-list.center label {
+  min-width: 100px;
+}
 .check-list p {
   padding-left: 12px;
 }
-.check-list input[type=checkbox] {
+.check-list input[type=radio], .check-list input[type=checkbox] {
   display: none;
 }
 .check-list div {
@@ -1037,4 +1130,77 @@ footer .copyright {
   padding-left: 0;
   margin-right: 5px;
   font-size: 14px;
+}
+/*tab card*/
+.tab-hd {
+  padding: 0 12px;
+  border-top: 1px solid #CCCCCC;
+  border-bottom: 1px solid #CCCCCC;
+}
+.tab-hd .tab-hd-con {
+  display: inline-block;
+  width: 50%;
+  line-height: 35px;
+  text-align: center;
+  cursor: pointer;
+}
+.tab-hd .tab-hd-con.current {
+  color: #FFFFFF;
+  background: #ed0803;
+  border-right: 1px solid #CCCCCC;
+  border-left: 1px solid #CCCCCC;
+}
+
+.tab-bd .tab-bd-con {
+  display: none;
+}
+.tab-bd .tab-bd-con.current {
+  display: block;
+}
+/*login*/
+.login {
+  padding-top: 70px;
+  padding-bottom: 30px;
+  /*    .ico{
+        position: absolute;
+        width: 28px;
+        height: 33px;
+        left: 0;
+        top: 0;
+        text-align: center;
+        background: #f6f6f6;
+      }*/
+}
+.login div {
+  height: 35px;
+  width: 225px;
+  margin: 15px auto;
+}
+.login label {
+  float: left;
+  line-height: 35px;
+  margin-right: 10px;
+}
+.login p {
+  display: inline-block;
+  width: 180px;
+  height: 35px;
+  position: relative;
+  border: 1px solid #CCCCCC;
+  border-radius: 2px;
+}
+.login input {
+  width: 100%;
+  height: 100%;
+  filter: opacity(1);
+  opacity: 0.01;
+  padding-left: 28px;
+ /*
+&+.ico{
+  display: none;
+}*/
+}
+.login input:focus {
+  filter: opacity(100);
+  opacity: 1;
 }
